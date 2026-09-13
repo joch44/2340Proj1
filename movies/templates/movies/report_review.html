@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="p-3">
+  <div class="container">
+    <div class="row mt-3">
+      <div class="col mx-auto mb-3">
+        <h2>Edit Review</h2>
+        <hr />
+        <p>Review Content: {{template_data.review.comment}}</p>
+        <form method="POST">
+          {% csrf_token %}
+          <p>
+            <label for="comment">Reason for report:</label>
+            <textarea name="reason" required
+            class="form-control" id="comment"></textarea>
+          </p>
+          <div class="text-start">
+            <button type="submit"
+              class="btn bg-dark text-white">Submit Report
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
