@@ -53,6 +53,7 @@ def purchase(request):
     item.price = m.price
     item.order = order
     item.quantity = cart[str(m.id)]
+    item.save()
 
   request.session['cart'] = {}
   t = {}

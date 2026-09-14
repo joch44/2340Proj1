@@ -18,7 +18,9 @@ def index(request):
 
 def show(request, id):
   movies = Movie.objects.get(id=id)
-  reviews = Review.objects.filter(movie=movies).exclude(reported_by=request.user)
+  reviews = Review.objects.filter(movie=movies)
+  if request.user.is_authenticated:
+    reviews = reviews.exclude(reported_by=request.user)
 
   return render(request, "movies/show.html", {'template_data' : {
       'title' : movies.name,
